@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b442142b-e050-4005-b4da-b26fc0d6ee36" name="Client Tact Live" url="http://clienttact.housetohomeuk.com">
+        <fileTransfer host="ftp3.ftptoyoursite.com" port="21" rootFolder="/clienttact.housetohomeuk.com/web/laravel" username="voguecreativeuk" />
+      </webServer>
+    </option>
+  </component>
+</project>

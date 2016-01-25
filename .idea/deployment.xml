@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" uploadOnCheckin="764ebab0-54ca-4abf-9576-3a1d927530d2">
+  <component name="PublishConfigData" serverName="Client Tact Live" uploadOnCheckin="764ebab0-54ca-4abf-9576-3a1d927530d2">
+    <serverData>
+      <paths name="Client Tact Live">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/public" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
     <option name="myUploadOnCheckinName" value="Client Tact" />
   </component>
 </project>
