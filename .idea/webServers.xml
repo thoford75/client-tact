@@ -3,7 +3,11 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="b442142b-e050-4005-b4da-b26fc0d6ee36" name="Client Tact Live" url="http://clienttact.housetohomeuk.com">
-        <fileTransfer host="ftp3.ftptoyoursite.com" port="21" rootFolder="/clienttact.housetohomeuk.com/web/laravel" username="voguecreativeuk" />
+        <fileTransfer host="ftp3.ftptoyoursite.com" port="21" rootFolder="/clientportal.housetohomeuk.com/web/laravel" password="dff4dfe5dfccdf84dff9dfcfdffcdfc4dfdedf9b" username="voguecreativeuk">
+          <advancedOptions>
+            <advancedOptions maxConnections="10" />
+          </advancedOptions>
+        </fileTransfer>
       </webServer>
     </option>
   </component>
