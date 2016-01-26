@@ -52,7 +52,7 @@
 
 
                                     <td>
-                                        <form action="/postjob" method="post">
+                                        <form action="postjob" method="post">
 
                                             <input type="hidden" name="quote_id" value="{{$job->act_id}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
@@ -75,27 +75,29 @@
                                             @endif
 
                                             <br>
-
-                                            <div class="input-group m-b"><span class="input-group-addon">&pound;</span>
+                                            <label>Price</label>
+                                            <div class="input-group m-b">
                                                 @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
-                                                    <label>Price</label><input name="price" type="text"
-                                                                               class="form-control"
-                                                                               value="{{$job->price}}">
+                                                    <span class="input-group-addon">&pound;</span><input name="price"
+                                                                                                         type="text"
+                                                                                                         class="form-control"
+                                                                                                         value="{{$job->price}}">
                                                 @else
-                                                    <label>Price</label><input name="price" type="text"
-                                                                               class="form-control"
-                                                                               placeholder="0.00">
+                                                    <span class="input-group-addon">&pound;</span><input name="price"
+                                                                                                         type="text"
+                                                                                                         class="form-control"
+                                                                                                         placeholder="0.00">
                                                 @endif
                                             </div>
 
                                             <br>
-
                                             <div class="input-group m-b">
                                                 @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
 
                                                     <label>Payment Terms</label><select class="form-control"
                                                                                         name="terms">
-                                                        <option selected value="{{$job->terms}}">{{$job->terms}}</option>
+                                                        <option selected
+                                                                value="{{$job->terms}}">{{$job->terms}}</option>
                                                         <option disabled value="">---</option>
                                                         <option value="60 Days">60 Day</option>
                                                         <option value="On Move Day">On Move Day</option>
@@ -104,7 +106,7 @@
                                                 @else
                                                     <label>Payment Terms</label><select class="form-control"
                                                                                         name="terms">
-                                                         <option value="60 Days">60 Day</option>
+                                                        <option value="60 Days">60 Day</option>
                                                         <option value="On Move Day">On Move Day</option>
                                                     </select>
                                                 @endif
@@ -119,7 +121,7 @@
                                                 <button class="form-control btn btn-primary" type="submit">Submit Rate
                                                 </button>
                                             @endif
-
+                                            <br>
                                         </form>
                                     </td>
 

@@ -52,7 +52,7 @@
 
 
                                     <td>
-                                        <form action="/postjob" method="post">
+                                        <form action="postjob" method="post">
 
                                             <input type="hidden" name="quote_id" value="{{$job->act_id}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
@@ -75,16 +75,16 @@
                                             @endif
 
                                             <br>
-
+                                            <label>Price</label>
                                             <div class="input-group m-b"><span class="input-group-addon">&pound;</span>
                                                 @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
-                                                    <label>Price</label><input name="price" type="text"
-                                                                               class="form-control"
-                                                                               value="{{$job->price}}">
+                                                    <input name="price" type="text"
+                                                           class="form-control"
+                                                           value="{{$job->price}}">
                                                 @else
-                                                    <label>Price</label><input name="price" type="text"
-                                                                               class="form-control"
-                                                                               placeholder="0.00">
+                                                    <input name="price" type="text"
+                                                           class="form-control"
+                                                           placeholder="0.00">
                                                 @endif
                                             </div>
 
@@ -120,18 +120,19 @@
                                                 <button class="form-control btn btn-primary" type="submit">Submit Rate
                                                 </button>
                                             @endif
-
+                                            <br>
                                         </form>
                                     </td>
 
+
                                     <td>
+                                        <ul>
                                         @foreach($bids as $bid)
                                         @if($job->quote_id === $bid->quote_id)
-
-                                        &pound;{{$bid->price}}
-                                        <br>
+                                                    <li>&pound;{{$bid->price}}</li>
                                         @endif
                                         @endforeach
+                                        </ul>
                                     </td>
 
 
