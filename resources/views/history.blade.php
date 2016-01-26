@@ -25,7 +25,8 @@
                                 <th>Moving To</th>
                                 <th>Expected Date</th>
                                 <th>Quoted Date</th>
-                                <th data-hide="all"></th>
+                                <th data-hide="all">Further Details</th>
+
 
                             </tr>
                             </thead>
@@ -51,7 +52,7 @@
 
 
                                     <td>
-                                        <form action="postjob" method="post">
+                                        <form action="/postjob" method="post">
 
                                             <input type="hidden" name="quote_id" value="{{$job->act_id}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
@@ -64,31 +65,36 @@
 
 
                                             @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
-                                                <textarea name="text" class="form-control" rows="5"
-                                                          id="comment">{{$job->text}}</textarea>
+                                                <label>Job Comments</label><textarea name="text" class="form-control"
+                                                                                     rows="5"
+                                                                                     id="comment">{{$job->text}}</textarea>
                                             @else
-                                                <textarea name="text" class="form-control" rows="5"
-                                                          id="comment">Please Enter Notes Here</textarea>
+                                                <label>Job Comments</label><textarea name="text" class="form-control"
+                                                                                     rows="5"
+                                                                                     id="comment">Please Enter Notes Here</textarea>
                                             @endif
 
                                             <br>
 
                                             <div class="input-group m-b"><span class="input-group-addon">&pound;</span>
                                                 @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
-                                                    <input name="price" type="text" class="form-control"
-                                                           value="{{$job->price}}">
+                                                    <label>Price</label><input name="price" type="text"
+                                                                               class="form-control"
+                                                                               value="{{$job->price}}">
                                                 @else
-                                                    <input name="price" type="text" class="form-control"
-                                                           placeholder="0.00">
+                                                    <label>Price</label><input name="price" type="text"
+                                                                               class="form-control"
+                                                                               placeholder="0.00">
                                                 @endif
                                             </div>
 
                                             <br>
 
-                                            <div class="input-group m-b">Payment Terms:
+                                            <div class="input-group m-b">
                                                 @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
 
-                                                    <select class="form-control" name="terms">
+                                                    <label>Payment Terms</label><select class="form-control"
+                                                                                        name="terms">
                                                         <option selected value="{{$job->terms}}">{{$job->terms}}</option>
                                                         <option disabled value="">---</option>
                                                         <option value="60 Days">60 Day</option>
@@ -96,7 +102,8 @@
                                                     </select>
 
                                                 @else
-                                                    <select class="form-control" name="terms">
+                                                    <label>Payment Terms</label><select class="form-control"
+                                                                                        name="terms">
                                                          <option value="60 Days">60 Day</option>
                                                         <option value="On Move Day">On Move Day</option>
                                                     </select>
@@ -115,6 +122,7 @@
 
                                         </form>
                                     </td>
+
 
                                 </tr>
 

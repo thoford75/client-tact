@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
 use App\Bids;
 use Auth;
+use DB;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -80,7 +80,7 @@ class HomeController extends Controller
         $query = DB::table("dbQuotes")
             ->leftJoin("dbACT", "dbQuotes.act_id", "=", "dbACT.ID")
             ->leftJoin("dbOpps", "dbQuotes.act_id", "=", "dbOpps.contactID")
-            ->leftjoin('dbBids', 'dbQuotes.act_id','=',
+            ->leftJoin('dbBids', 'dbQuotes.act_id', '=',
                 DB::raw('dbBids.quote_id AND dbBids.user_id = '. Auth::user()->id))
             ->where("dbQuotes.active", "=", "1")
             ->select("dbQuotes.*", "dbACT.*", "dbBids.*",
@@ -90,8 +90,14 @@ class HomeController extends Controller
             ->orderBy("posted_date", "desc")
             ->get();
 
+        $act_id = DB::table('dbQuotes')->lists('act_id');
 
-        return view('jobs', ['query' => $query]);
+        $bids = DB::table("dbBids")
+            ->whereIn("quote_id", $act_id)
+            ->get();
+
+
+        return view('jobs', ['query' => $query, 'bids' => $bids]);
 
     }
 
