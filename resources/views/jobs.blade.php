@@ -85,6 +85,26 @@
 
                                             <br>
 
+                                            <div class="input-group m-b">Payment Terms:
+                                                @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+
+                                                    <select class="form-control" name="terms">
+                                                        <option selected value="{{$job->terms}}">{{$job->terms}}</option>
+                                                        <option disabled value="">---</option>
+                                                        <option value="60 Days">60 Day</option>
+                                                        <option value="On Move Day">On Move Day</option>
+                                                    </select>
+
+                                                @else
+                                                    <select class="form-control" name="terms">
+                                                        <option value="60 Days">60 Day</option>
+                                                        <option value="On Move Day">On Move Day</option>
+                                                    </select>
+                                                @endif
+                                            </div>
+
+                                            <br>
+
                                             @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
                                                 <button class="form-control btn btn-danger" type="submit">Update Rate
                                                 </button>

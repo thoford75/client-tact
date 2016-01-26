@@ -42,6 +42,7 @@ class HomeController extends Controller
 
             $bids->price = $request->input('price');
             $bids->text = $request->input('text');
+            $bids->terms = $request->input('terms');
             $bids->timestamp = date('Y-m-d H:i:s');
 
             $bids->save();
@@ -56,6 +57,7 @@ class HomeController extends Controller
             $bids->user_id = $request->input('user_id');
             $bids->price = $request->input('price');
             $bids->text = $request->input('text');
+            $bids->terms = $request->input('terms');
             $bids->timestamp = date('Y-m-d H:i:s');
 
             $bids->save();
