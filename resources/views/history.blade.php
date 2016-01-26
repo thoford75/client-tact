@@ -57,14 +57,14 @@
                                             <input type="hidden" name="quote_id" value="{{$job->act_id}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-                                            @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                            @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                 <input type="hidden" name="id" value="{{$job->bid_id}}"/>
                                             @else
                                                 <input type="hidden" name="id" value=""/>
                                             @endif
 
 
-                                            @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                            @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                 <label>Job Comments</label><textarea name="text" class="form-control"
                                                                                      rows="5"
                                                                                      id="comment">{{$job->text}}</textarea>
@@ -77,7 +77,7 @@
                                             <br>
                                             <label>Price</label>
                                             <div class="input-group m-b">
-                                                @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                                @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                     <span class="input-group-addon">&pound;</span><input name="price"
                                                                                                          type="text"
                                                                                                          class="form-control"
@@ -92,7 +92,7 @@
 
                                             <br>
                                             <div class="input-group m-b">
-                                                @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                                @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
 
                                                     <label>Payment Terms</label><select class="form-control"
                                                                                         name="terms">
@@ -114,7 +114,7 @@
 
                                             <br>
 
-                                            @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                            @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                 <button class="form-control btn btn-danger" type="submit">Update Rate
                                                 </button>
                                             @else

@@ -35,7 +35,7 @@
                             @foreach($query as $job)
 
                                 <tr>
-                                    <td>@if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                    <td>@if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                             <button class="btn btn-success btn-circle" type="button"><i
                                                         class="fa fa-check"></i></button>
                                         @else
@@ -57,14 +57,14 @@
                                             <input type="hidden" name="quote_id" value="{{$job->act_id}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-                                            @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                            @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                 <input type="hidden" name="id" value="{{$job->bid_id}}"/>
                                             @else
                                                 <input type="hidden" name="id" value=""/>
                                             @endif
 
 
-                                            @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                            @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                 <label>Job Comments</label><textarea name="text" class="form-control"
                                                                                      rows="5"
                                                                                      id="comment">{{$job->text}}</textarea>
@@ -77,7 +77,7 @@
                                             <br>
                                             <label>Price</label>
                                             <div class="input-group m-b"><span class="input-group-addon">&pound;</span>
-                                                @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                                @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                     <input name="price" type="text"
                                                            class="form-control"
                                                            value="{{$job->price}}">
@@ -91,7 +91,7 @@
                                             <br>
 
                                             <div class="input-group m-b">
-                                                @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                                @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
 
                                                     <label>Payment Terms</label><select class="form-control"
                                                                                         name="terms">
@@ -113,7 +113,7 @@
 
                                             <br>
 
-                                            @if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
+                                            @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                 <button class="form-control btn btn-danger" type="submit">Update Rate
                                                 </button>
                                             @else
@@ -128,7 +128,7 @@
                                     <td>
                                         <ul>
                                         @foreach($bids as $bid)
-                                        @if($job->quote_id === $bid->quote_id)
+                                                @if($job->quote_id == $bid->quote_id)
                                                     <li>&pound;{{$bid->price}}</li>
                                         @endif
                                         @endforeach
