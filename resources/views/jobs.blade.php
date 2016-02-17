@@ -19,14 +19,14 @@
                             <thead>
                             <tr>
 
-                                <th data-toggle="true">Client</th>
+                                <th data-toggle="true">Job</th>
                                 <th>Size</th>
                                 <th>Moving From</th>
                                 <th>Moving To</th>
                                 <th>Expected Date</th>
                                 <th>Posted Date</th>
                                 <th data-hide="all">Further Details</th>
-                                <th data-hide="all">Bids</th>
+
 
                             </tr>
                             </thead>
@@ -36,27 +36,40 @@
 
                                 <tr>
                                     <td>@if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
-                                            <button class="btn btn-success btn-circle" type="button"><i
-                                                        class="fa fa-check"></i></button>
+
+                                            @if($job->accepted=='1')
+                                                <button class="btn btn-success btn-circle" type="button"><i
+                                                            class="fa fa-thumbs-o-up"></i></button>
+                                            @elseif($job->accepted=='2')
+                                                <button class="btn btn-danger btn-circle" type="button"><i
+                                                            class="fa fa-thumbs-o-down"></i></button>
+                                            @else
+                                                <button class="btn btn-info btn-circle" type="button"><i
+                                                            class="fa fa-check"></i></button>
+                                            @endif
+
                                         @else
                                             <button class="btn btn-warning btn-circle" type="button"><i
                                                         class="fa fa-list"></i></button>
                                         @endif
-                                        {{$job->xBuilder}}
+
                                     </td>
                                     <td>{{$job->survey_cubic_move}}</td>
                                     <td>{{$job->xMoveZip}}</td>
-                                    <td>{{$job->xSite}}</td>
+                                    <td>{{$job->xSiteZip}}</td>
                                     <td>{{$job->expected_date}}</td>
                                     <td>{{$job->posted_date}} by {{$job->user_rep}}</td>
 
 
                                     <td>
+                                        <i>{{$job->notes}}</i>
+                                        <br>
                                         <form action="postjob" method="post">
 
                                             <input type="hidden" name="quote_id" value="{{$job->act_id}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+
                                             @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
                                                 <input type="hidden" name="id" value="{{$job->bid_id}}"/>
                                             @else
@@ -71,7 +84,8 @@
                                             @else
                                                 <label>Job Comments</label><textarea name="text" class="form-control"
                                                                                      rows="5"
-                                                                                     id="comment">Please Enter Notes Here</textarea>
+                                                                                     id="comment"
+                                                                                     placeholder="Please Enter Notes Here"></textarea>
                                             @endif
 
                                             <br>
@@ -88,28 +102,6 @@
                                                 @endif
                                             </div>
 
-                                            <br>
-
-                                            <div class="input-group m-b">
-                                                @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
-
-                                                    <label>Payment Terms</label><select class="form-control"
-                                                                                        name="terms">
-                                                        <option selected
-                                                                value="{{$job->terms}}">{{$job->terms}}</option>
-                                                        <option disabled value="">---</option>
-                                                        <option value="60 Days">60 Day</option>
-                                                        <option value="On Move Day">On Move Day</option>
-                                                    </select>
-
-                                                @else
-                                                    <label>Payment Terms</label><select class="form-control"
-                                                                                        name="terms">
-                                                        <option value="60 Days">60 Day</option>
-                                                        <option value="On Move Day">On Move Day</option>
-                                                    </select>
-                                                @endif
-                                            </div>
 
                                             <br>
 
@@ -122,17 +114,6 @@
                                             @endif
                                             <br>
                                         </form>
-                                    </td>
-
-
-                                    <td>
-                                        <ul>
-                                        @foreach($bids as $bid)
-                                                @if($job->quote_id == $bid->quote_id)
-                                                    <li>&pound;{{$bid->price}}</li>
-                                        @endif
-                                        @endforeach
-                                        </ul>
                                     </td>
 
 

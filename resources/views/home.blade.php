@@ -8,7 +8,8 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    You are logged in {{Auth::user()->name}}! You can view new jobs by clicking the 'Jobs' tab to the
+                    left. All your previous bids are saved in the 'History' section.
                 </div>
             </div>
         </div>

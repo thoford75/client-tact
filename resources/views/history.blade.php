@@ -19,7 +19,8 @@
                             <thead>
                             <tr>
 
-                                <th data-toggle="true">Client</th>
+
+                                <th data-toggle="true">Job</th>
                                 <th>Size</th>
                                 <th>Moving From</th>
                                 <th>Moving To</th>
@@ -35,23 +36,35 @@
                             @foreach($history as $job)
 
                                 <tr>
-                                    <td>@if($job->quote_id === $job->act_id && $job->user_id === Auth::user()->id)
-                                            <button class="btn btn-success btn-circle" type="button"><i
-                                                        class="fa fa-check"></i></button>
+                                    <td>@if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
+
+                                            @if($job->accepted=='1')
+                                                <button class="btn btn-success btn-circle" type="button"><i
+                                                            class="fa fa-thumbs-o-up"></i></button>
+                                            @elseif($job->accepted=='2')
+                                                <button class="btn btn-danger btn-circle" type="button"><i
+                                                            class="fa fa-thumbs-o-down"></i></button>
+                                            @else
+                                                <button class="btn btn-info btn-circle" type="button"><i
+                                                            class="fa fa-check"></i></button>
+                                            @endif
+
                                         @else
                                             <button class="btn btn-warning btn-circle" type="button"><i
                                                         class="fa fa-list"></i></button>
                                         @endif
-                                        {{$job->xBuilder}}
+
                                     </td>
                                     <td>{{$job->survey_cubic_move}}</td>
                                     <td>{{$job->xMoveZip}}</td>
-                                    <td>{{$job->xSite}}</td>
+                                    <td>{{$job->xSiteZip}}</td>
                                     <td>{{$job->expected_date}}</td>
                                     <td>{{$job->timestamp}}</td>
 
 
                                     <td>
+                                        <i>{{$job->notes}}</i>
+                                        <br>
                                         <form action="postjob" method="post">
 
                                             <input type="hidden" name="quote_id" value="{{$job->act_id}}">
@@ -87,28 +100,6 @@
                                                                                                          type="text"
                                                                                                          class="form-control"
                                                                                                          placeholder="0.00">
-                                                @endif
-                                            </div>
-
-                                            <br>
-                                            <div class="input-group m-b">
-                                                @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)
-
-                                                    <label>Payment Terms</label><select class="form-control"
-                                                                                        name="terms">
-                                                        <option selected
-                                                                value="{{$job->terms}}">{{$job->terms}}</option>
-                                                        <option disabled value="">---</option>
-                                                        <option value="60 Days">60 Day</option>
-                                                        <option value="On Move Day">On Move Day</option>
-                                                    </select>
-
-                                                @else
-                                                    <label>Payment Terms</label><select class="form-control"
-                                                                                        name="terms">
-                                                        <option value="60 Days">60 Day</option>
-                                                        <option value="On Move Day">On Move Day</option>
-                                                    </select>
                                                 @endif
                                             </div>
 

@@ -5,20 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>TACT v2</title>
+    <title>TACT Client Bidding System</title>
 
     <!-- Vendor styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.2.0/metisMenu.min.css" />
-    <link rel="stylesheet" href="{{ asset('vendor/animate.css/animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.2.0/metisMenu.min.css"/>
+    <link rel="stylesheet" href="{{ asset('vendor/animate.css/animate.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('vendor/fooTable/css/footable.core.min.css') }}">
 
     <!-- App styles -->
-    <link rel="stylesheet" href="{{ asset('fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}" />
-    <link rel="stylesheet" href="{{ asset('fonts/pe-icon-7-stroke/css/helper.css') }}" />
+    <link rel="stylesheet" href="{{ asset('fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('fonts/pe-icon-7-stroke/css/helper.css') }}"/>
     <link rel="stylesheet" href="{{ asset('styles/style.css') }}">
-
 
 
 </head>
@@ -29,7 +28,7 @@
     </div>
     <div id="logo" class="light-version">
         <span>
-            TACT v2
+            TACT Client System
         </span>
     </div>
 
@@ -40,7 +39,8 @@
         </div>
 
         <div class="mobile-menu">
-            <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
+            <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse"
+                    data-target="#mobile-collapse">
                 <i class="fa fa-chevron-down"></i>
             </button>
             <div class="collapse mobile-navbar" id="mobile-collapse">
@@ -58,7 +58,6 @@
             </div>
         </div>
         <div class="navbar-right">
-
 
 
             <ul class="nav navbar-nav no-borders">
@@ -88,41 +87,56 @@
         <div id="navigation">
             <div class="profile-picture">
                 <a href="#">
-                    <img src="{{ asset('images/clients/'.  Auth::user()->name .'-profile.jpg') }}" class="img-circle m-b" alt="logo">
+                    <img src="{{ asset('images/clients/'.  Auth::user()->name .'-profile.jpg') }}"
+                         class="img-circle m-b" alt="logo">
                 </a>
 
                 <div class="stats-label text-color">
                     <span class="font-extra-bold font-uppercase">{{ Auth::user()->name}}</span>
 
                     <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                            <small class="text-muted">{{ Auth::user()->jobrole }}<b class="caret"></b></small>
-                        </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="#">Contacts</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Analytics</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{ url('logout') }}">Logout</a></li>
-                        </ul>
+
+                        <small class="text-muted">{{ Auth::user()->jobrole }}</small>
+
+
                     </div>
-
-
 
 
                 </div>
             </div>
 
             <ul class="nav" id="side-menu">
-                <li {{ (Request::is('*board') ? 'class="active"' : '') }}>
-                    <a href="jobs"> <span class="nav-label">Job Board</span> <span class="label label-success pull-right">{{ gmdate('M Y') }}</span> </a>
+                <li>
+                    <a href="/jobs"> <span class="nav-label">Job Board</span></a>
                 </li>
                 <li>
-                    <a href="history"> <span class="nav-label">History</span></a>
+                    <a href="/history"> <span class="nav-label">History</span></a>
                 </li>
 
-
             </ul>
+            <div align="center">
+                <br><br>
+                New Job:<br>
+                <button class="btn btn-warning btn-circle" type="button"><i
+                            class="fa fa-list"></i>
+                </button>
+                <br><br>
+                Quoted:<br>
+                <button class="btn btn-info btn-circle" type="button"><i
+                            class="fa fa-check"></i>
+                </button>
+                <br><br>
+                Bid Accepted:<br>
+                <button class="btn btn-success btn-circle" type="button"><i
+                            class="fa fa-thumbs-o-up"></i>
+                </button>
+                <br><br>
+                Bid Rejected:<br>
+                <button class="btn btn-danger btn-circle" type="button"><i
+                            class="fa fa-thumbs-o-down"></i>
+                </button>
+                <br><br>
+            </div>
         </div>
     </aside>
 @else
@@ -130,7 +144,7 @@
         <div id="navigation">
             <div class="profile-picture">
                 <a href="#">
-                    <img src="{{ asset('images/h2h-logo.jpg') }}" class="img-circle m-b" alt="logo">
+                    <img src="{{ asset('images/h2h-logo.jpg') }}" class="img-circle m-b" alt="house to home logo">
                 </a>
 
                 <div class="stats-label text-color">
@@ -158,9 +172,10 @@
                 <!-- Footer-->
         <footer class="footer">
         <span class="pull-right">
-            House to Home
+            House to Home.
         </span>
-            Developed by <a href="mailto: tom@voguegroup.co.uk">Tom Ford</a> 2011 - {{ date('Y') }}
+            Developed by <a href="mailto: tom@thoford.co.uk">Tom Ford</a> 2011 - {{ date('Y') }}
+
         </footer>
 
     </div>
@@ -189,15 +204,11 @@
 
             // Initialize Example 1
             $('#sortableTable').footable();
-            
 
 
         });
 
     </script>
-
-
-
 
 
 </body>
