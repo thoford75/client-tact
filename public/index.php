@@ -19,9 +19,7 @@
 |
 */
 
-//require __DIR__.'/../bootstrap/autoload.php'; //LOCAL
-require __DIR__ . '/../laravel/bootstrap/autoload.php'; //LIVE
-
+require __DIR__ . '/../bootstrap/autoload.php';
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights
@@ -34,8 +32,8 @@ require __DIR__ . '/../laravel/bootstrap/autoload.php'; //LIVE
 |
 */
 
-//app = require_once __DIR__.'/../bootstrap/app.php'; //LOCAL
-$app = require_once __DIR__ . '/../ /bootstrap/app.php'; //LIVE
+
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
