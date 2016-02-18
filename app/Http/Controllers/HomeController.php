@@ -60,7 +60,18 @@ class HomeController extends Controller
 
             $bids->save();
 
-            //email MM RATE GIVEN
+            $emailList = array("tom@voguegroup.co.uk");
+
+            $headers = "From: <noreply@housetohomeuk.com>";
+            $subject = "New Rate Received";
+            $body = "Yo. New rate added";
+
+            foreach ($emailList AS $addy) {
+                $success = mail($addy, $subject, $body, $headers);
+                if (!$success) {
+                    echo "Mail to " . $addy . " is fail.";
+                }
+            }
 
         }
 
@@ -80,7 +91,7 @@ class HomeController extends Controller
             ->leftJoin("dbOpps", "dbQuotes.act_id", "=", "dbOpps.contactID")
             ->leftJoin("dbSites", "dbACT.xSite", "=", "dbSites.site_name")
             ->leftJoin('dbBids', 'dbQuotes.act_id', '=',
-                DB::raw('dbBids.quote_id AND dbBids.user_id = '. Auth::user()->id))
+                DB::raw('dbBids.quote_id AND dbBids.user_id = ' . Auth::user()->id))
             ->where("dbQuotes.active", "=", "1")
             ->select("dbQuotes.*", "dbACT.*", "dbBids.*",
                 (DB::raw('date_format(dbQuotes.posted_date, "%d/%m/%Y %H:%i") as posted_date')),
@@ -107,7 +118,7 @@ class HomeController extends Controller
         $history = DB::table("dbBids")
             ->leftJoin("dbACT", "dbBids.quote_id", "=", "dbACT.ID")
             ->leftJoin("dbOpps", "dbBids.quote_id", "=", "dbOpps.contactID")
-            ->leftjoin('dbQuotes', 'dbBids.quote_id','=', 'dbQuotes.act_id')
+            ->leftjoin('dbQuotes', 'dbBids.quote_id', '=', 'dbQuotes.act_id')
             ->leftJoin("dbSites", "dbACT.xSite", "=", "dbSites.site_name")
             ->where("dbQuotes.active", "=", "1")
             ->where("dbBids.user_id", "=", Auth::user()->id)
