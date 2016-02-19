@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bids;
+use App\Comm;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -46,7 +47,15 @@ class HomeController extends Controller
 
             $bids->save();
 
-            //email MM RATE HAS CHANGED
+            $comm = new Comm;
+
+            $comm->mm = $request->input('mm');
+            $comm->customer = $request->input('quote_id');
+            $comm->supplier = Auth::user()->id;
+
+
+            $comm->save();
+
 
         } else {
 
@@ -60,18 +69,15 @@ class HomeController extends Controller
 
             $bids->save();
 
-            $emailList = array("tom@voguegroup.co.uk");
+            $comm = new Comm;
 
-            $headers = "From: <noreply@housetohomeuk.com>";
-            $subject = "New Rate Received";
-            $body = "Yo. New rate added";
+            $comm->mm = $request->input('mm');
+            $comm->customer = $request->input('quote_id');
+            $comm->supplier = Auth::user()->id;
 
-            foreach ($emailList AS $addy) {
-                $success = mail($addy, $subject, $body, $headers);
-                if (!$success) {
-                    echo "Mail to " . $addy . " is fail.";
-                }
-            }
+
+            $comm->save();
+
 
         }
 
@@ -90,12 +96,14 @@ class HomeController extends Controller
             ->leftJoin("dbACT", "dbQuotes.act_id", "=", "dbACT.ID")
             ->leftJoin("dbOpps", "dbQuotes.act_id", "=", "dbOpps.contactID")
             ->leftJoin("dbSites", "dbACT.xSite", "=", "dbSites.site_name")
+            ->leftJoin("dbUsers", "dbACT.user_rep", "=", "dbUsers.user_firstname")
             ->leftJoin('dbBids', 'dbQuotes.act_id', '=',
                 DB::raw('dbBids.quote_id AND dbBids.user_id = ' . Auth::user()->id))
             ->where("dbQuotes.active", "=", "1")
             ->select("dbQuotes.*", "dbACT.*", "dbBids.*",
                 (DB::raw('date_format(dbQuotes.posted_date, "%d/%m/%Y %H:%i") as posted_date')),
                 (DB::raw('date_format(dbOpps.expected_date, "%d/%m/%Y") as expected_date')),
+                (DB::raw('dbUsers.user_id as mm')),
                 (DB::raw('dbSites.site_postcode as xSiteZip')))
             ->groupBy("dbQuotes.id")
             ->orderBy("posted_date", "desc")
@@ -120,12 +128,14 @@ class HomeController extends Controller
             ->leftJoin("dbOpps", "dbBids.quote_id", "=", "dbOpps.contactID")
             ->leftjoin('dbQuotes', 'dbBids.quote_id', '=', 'dbQuotes.act_id')
             ->leftJoin("dbSites", "dbACT.xSite", "=", "dbSites.site_name")
+            ->leftJoin("dbUsers", "dbACT.user_rep", "=", "dbUsers.user_firstname")
             ->where("dbQuotes.active", "=", "1")
             ->where("dbBids.user_id", "=", Auth::user()->id)
             ->select("dbQuotes.*", "dbACT.*", "dbBids.*",
                 (DB::raw('date_format(dbBids.timestamp, "%d/%m/%Y %H:%i") as timestamp')),
                 (DB::raw('date_format(dbQuotes.posted_date, "%d/%m/%Y %H:%i") as posted_date')),
                 (DB::raw('date_format(dbOpps.expected_date, "%d/%m/%Y") as expected_date')),
+                (DB::raw('dbUsers.user_id as mm')),
                 (DB::raw('dbSites.site_postcode as xSiteZip')))
             ->groupBy("dbQuotes.id")
             ->orderBy("timestamp", "desc")

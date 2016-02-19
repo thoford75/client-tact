@@ -68,6 +68,7 @@
                                         <form action="postjob" method="post">
 
                                             <input type="hidden" name="quote_id" value="{{$job->act_id}}">
+                                            <input type="hidden" name="mm" value="{{$job->mm}}">
                                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                                             @if($job->quote_id == $job->act_id && $job->user_id == Auth::user()->id)

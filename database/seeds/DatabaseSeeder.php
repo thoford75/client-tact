@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,9 +24,9 @@ class ContactsTableSeeder extends Seeder {
     {
 
         User::create(array(
-            'name'     => 'Test Client',
-            'email'    => 'client@housetohomeuk.com',
-            'password' => Hash::make('client'),
+            'name' => 'New Client',
+            'email' => 'new@housetohomeuk.com',
+            'password' => Hash::make('new'),
         ));
 
     }

@@ -2,11 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Bids extends \Eloquent
 {
-    protected $table = 'dbBids';
     public $timestamps = false;
     public $primaryKey = 'bid_id';
+    protected $table = 'dbBids';
+}
+
+class Comm extends \Eloquent
+{
+    public $timestamps = false;
+    public $primaryKey = 'id';
+    protected $table = 'dbClientComm';
 }
