@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Client Tact Live" uploadOnCheckin="764ebab0-54ca-4abf-9576-3a1d927530d2">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Client Tact Live" uploadOnCheckin="b442142b-e050-4005-b4da-b26fc0d6ee36">
     <serverData>
       <paths name="Client Tact Live">
         <serverdata>
@@ -13,7 +13,7 @@
         </serverdata>
       </paths>
     </serverData>
-    <option name="myUploadOnCheckinName" value="Client Tact" />
+    <option name="myUploadOnCheckinName" value="Client Tact Live" />
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
