@@ -24,10 +24,35 @@ class ContactsTableSeeder extends Seeder {
     {
 
         User::create(array(
-            'name' => 'New Client',
-            'email' => 'new@housetohomeuk.com',
-            'password' => Hash::make('new'),
+            'name' => 'JLF Moving Solutions Limited',
+            'email' => 'steve@jlfmovingsolutions.co.uk',
+            'password' => Hash::make('jlf2016'),
         ));
+
+        User::create(array(
+            'name' => 'John Lomas Removals Ltd',
+            'email' => 'rob.horrobin@johnlomasremovals.co.uk',
+            'password' => Hash::make('johnlomasremovals2016'),
+        ));
+
+        User::create(array(
+            'name' => 'Metro Removals Limited',
+            'email' => 'lee@metroremovals.co.uk',
+            'password' => Hash::make('metro2016'),
+        ));
+
+        User::create(array(
+            'name' => 'W Southerington &amp; Sons Ltd',
+            'email' => 'paul@southeringtons.co.uk',
+            'password' => Hash::make('southeringtons2016'),
+        ));
+
+        User::create(array(
+            'name' => 'Warrens Removals',
+            'email' => 'warrenleggett@hotmail.co.uk',
+            'password' => Hash::make('warrens2016'),
+        ));
+
 
     }
 

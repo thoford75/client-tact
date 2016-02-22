@@ -87,7 +87,7 @@
         <div id="navigation">
             <div class="profile-picture">
                 <a href="#">
-                    <img src="{{ asset('images/clients/'.  Auth::user()->name .'-profile.jpg') }}"
+                    <img src="{{ asset('images/clients/'.  Auth::user()->id .'-profile.jpg') }}"
                          class="img-circle m-b" alt="logo">
                 </a>
 
