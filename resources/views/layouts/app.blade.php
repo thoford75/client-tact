@@ -87,7 +87,7 @@
         <div id="navigation">
             <div class="profile-picture">
                 <a href="#">
-                    <img src="{{ asset('images/clients/'.  Auth::user()->id .'-profile.jpg') }}"
+                    <img width="100px" src="{{ asset('images/clients/'.  Auth::user()->id .'.png') }}"
                          class="img-circle m-b" alt="logo">
                 </a>
 
@@ -107,10 +107,10 @@
 
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="/jobs"> <span class="nav-label">Job Board</span></a>
+                    <a href="{{ url('jobs') }}"> <span class="nav-label">Job Board</span></a>
                 </li>
                 <li>
-                    <a href="/history"> <span class="nav-label">History</span></a>
+                    <a href="{{ url('history') }}"> <span class="nav-label">History</span></a>
                 </li>
 
             </ul>
